@@ -1,4 +1,4 @@
-Nestjs-clamscan
+Nestjs-clamscan [![NPM](https://nodei.co/npm/nestjs-clamscan.png)](https://npmjs.org/package/nestjs-clamscan)
 ===
 
 A ClamAV client on nest.js
