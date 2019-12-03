@@ -1,27 +1,31 @@
 import { Injectable } from '@nestjs/common';
-import { ClamScanOptions } from './clamscan.interface';
+import { ClamScanOptions, ClamScanDirectoryResult, ClamScanDirectoryOptions } from './clamscan.interface';
 import * as clamd from 'clamdjs';
 
 @Injectable()
 export class ClamScanService {
-    private instance: any;
+    private scanner: any;
     private options: ClamScanOptions;
 
     constructor(options: ClamScanOptions) {
         this.options = options;
-        this.instance = clamd.createScanner(options.host, options.port);
+        this.scanner = clamd.createScanner(options.host, options.port);
     }
 
     public scanStream(stream: Object, timeout: number = 3000): Promise<string> {
-        return this.instance.scanStream(stream, timeout);
+        return this.scanner.scanStream(stream, timeout);
     }
 
     public scanBuffer(buffer: Object, timeout: number = 3000, chunkSize: number = 1024 * 1024): Promise<string> {
-        return this.instance.scanBuffer(buffer, timeout, chunkSize);
+        return this.scanner.scanBuffer(buffer, timeout, chunkSize);
     }
 
     public scanFile(path: string, timeout: number = 3000, chunkSize: number = 1024 * 1024): Promise<string> {
-        return this.instance.scanFile(path, timeout, chunkSize);
+        return this.scanner.scanFile(path, timeout, chunkSize);
+    }
+
+    public scanDirectory(path: string, options: ClamScanDirectoryOptions): Promise<ClamScanDirectoryResult> {
+        return this.scanner.scanDirectory(path, options);
     }
 
     public version(timeout: number = 1000): Promise<string> {

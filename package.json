@@ -7,7 +7,7 @@
     "test": "jest --verbose",
     "build": "rm -rf ./dist && tsc --p tsconfig.build.json",
     "report": "cat ./coverage/lcov.info | coveralls",
-    "example": "rm -rf ./dist && tsc && HOST='127.0.0.1' PORT=3310 node dist/example/main"
+    "example": "rm -rf ./dist && tsc && mkdir ./dist/example/files && cp ./example/test.safe.txt ./dist/example/files/test.safe.txt && cp ./example/test.virus.txt ./dist/example/files/test.virus.txt && HOST='127.0.0.1' PORT=3310 node dist/example/main"
   },
   "engineStrict": false,
   "engines": {

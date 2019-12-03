@@ -130,8 +130,8 @@
         "signature": "873c09f1c309389742d98b7b67419a8e0a5fa6f10ce59fd5149ecd31a2818594"
       },
       "../src/clamscan.interface.ts": {
-        "version": "65230de24c714855d7b224f63beb071a2e384fc654e50f2281388006a438fcee",
-        "signature": "09afd38c53e6f2dc59a61d3e835be7b6a55cf2488bfdfda5a2677755b591a62b"
+        "version": "babbe29d9467b7be09ede6bf4b0295d6319b0eb770e66913e3a165cb8c74ac92",
+        "signature": "6699f8706c0b6fc72fb077e47f95bbf9fe0341896b68beffe2a16f5c6516e15a"
       },
       "../node_modules/reflect-metadata/index.d.ts": {
         "version": "8d6d51a5118d000ed3bfe6e1dd1335bebfff3fef23cd2af2f84a24d30f90cc90",
@@ -1106,8 +1106,8 @@
         "signature": "e0e01013f40a172c13d53c88ce2695741df27852da7ede9e2e336c86c43c8ec5"
       },
       "../src/clamscan.service.ts": {
-        "version": "7583fbbef570ed4fa4bbe047ee6e330eb4e5d82f514f67e047821fe05c1f7da1",
-        "signature": "933635b6554e26d2e354ec3bc8357f6b4b106227da35281221b198fd36a373da"
+        "version": "a5b6353485e8917226f96aed62ead2bd5647dbfcca3a17f80f374f6a09083dc9",
+        "signature": "444e5773e7643664a0650c5b53389fd3eb54dd7d4e20ed514d839b4011cdcf62"
       },
       "../src/clamscan.module.ts": {
         "version": "723b65cb5d09aaf300609cfe7d6c4fe73e63d0023f8071f7366a40b236706b04",
@@ -1118,8 +1118,8 @@
         "signature": "8f6a8caf374d1110a2f7059337bf21976f86424494fdd396ed72c7a2b2d221b0"
       },
       "../example/app.controller.ts": {
-        "version": "91ce0ff292f03d529cd99f0f8543769dc3bab2435ca522e70fec8c326b38a37b",
-        "signature": "b564f502e6e01d1d57c44840b929da32b8d034940e9ad7f1a174aeb720d7ac1e"
+        "version": "e6cd02c1e1f702bd2fd36567937c3ba26360cfe049e27ce50aa3ec5c48df2064",
+        "signature": "50a7dd7ffc3c2839ed32db79205dfd84753a0c86c07d16aab138ab6fb096b1de"
       },
       "../example/app.module.ts": {
         "version": "62b74ef1ebe6d01bf2129d2dfb21cb2ac18ba1273bf15b5893fd916a52824b66",

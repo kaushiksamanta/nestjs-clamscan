@@ -14,16 +14,19 @@ const clamd = require("clamdjs");
 let ClamScanService = class ClamScanService {
     constructor(options) {
         this.options = options;
-        this.instance = clamd.createScanner(options.host, options.port);
+        this.scanner = clamd.createScanner(options.host, options.port);
     }
     scanStream(stream, timeout = 3000) {
-        return this.instance.scanStream(stream, timeout);
+        return this.scanner.scanStream(stream, timeout);
     }
     scanBuffer(buffer, timeout = 3000, chunkSize = 1024 * 1024) {
-        return this.instance.scanBuffer(buffer, timeout, chunkSize);
+        return this.scanner.scanBuffer(buffer, timeout, chunkSize);
     }
     scanFile(path, timeout = 3000, chunkSize = 1024 * 1024) {
-        return this.instance.scanFile(path, timeout, chunkSize);
+        return this.scanner.scanFile(path, timeout, chunkSize);
+    }
+    scanDirectory(path, options) {
+        return this.scanner.scanDirectory(path, options);
     }
     version(timeout = 1000) {
         return clamd.version(this.options.host, this.options.port, timeout);

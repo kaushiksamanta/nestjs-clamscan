@@ -18,6 +18,21 @@ let AppController = class AppController {
     getVersion() {
         return this.clamScanService.version();
     }
+    async scanInfected() {
+        return this.clamScanService.scanFile(__dirname + '/files/test.virus.txt');
+    }
+    async scanSafe() {
+        return this.clamScanService.scanFile(__dirname + '/files/test.safe.txt');
+    }
+    async scanDirectory() {
+        return this.clamScanService.scanDirectory(__dirname + '/files', {
+            timeout: 5000,
+            chunkSize: 64 * 1024,
+            scanningFile: 10,
+            detail: true,
+            cont: true
+        });
+    }
 };
 __decorate([
     common_1.Get(),
@@ -25,6 +40,24 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "getVersion", null);
+__decorate([
+    common_1.Get('/scan-infected'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "scanInfected", null);
+__decorate([
+    common_1.Get('/scan-safe'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "scanSafe", null);
+__decorate([
+    common_1.Get('/scan-directory'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "scanDirectory", null);
 AppController = __decorate([
     common_1.Controller(),
     __metadata("design:paramtypes", [src_1.ClamScanService])
