@@ -12,19 +12,19 @@ export class ClamScanService {
         this.instance = clamd.createScanner(options.host, options.port);
     }
 
-    public scanStream(stream: Object, timeout: number): Promise<String> {
+    public scanStream(stream: Object, timeout: number = 3000): Promise<string> {
         return this.instance.scanStream(stream, timeout);
     }
 
-    public scanBuffer(buffer: Object, timeout: number, chunkSize: number): Promise<String> {
+    public scanBuffer(buffer: Object, timeout: number = 3000, chunkSize: number = 1024 * 1024): Promise<string> {
         return this.instance.scanBuffer(buffer, timeout, chunkSize);
     }
 
-    public scanFile(path: String, timeout: number, chunkSize: number): Promise<String> {
+    public scanFile(path: string, timeout: number = 3000, chunkSize: number = 1024 * 1024): Promise<string> {
         return this.instance.scanFile(path, timeout, chunkSize);
     }
 
-    public version(timeout: number): Promise<String> {
-        return this.instance.version(this.options.host, this.options.port, timeout);
+    public version(timeout: number = 1000): Promise<string> {
+        return clamd.version(this.options.host, this.options.port, timeout);
     }
 }

@@ -1,5 +1,5 @@
-import { Controller, Get } from "@nestjs/common";
-import { ClamScanService } from "src";
+import { Controller, Get } from '@nestjs/common';
+import { ClamScanService } from '../src';
 
 @Controller()
 export class AppController {
@@ -9,7 +9,9 @@ export class AppController {
   }
 
   @Get()
-  async getHello(): Promise<string> {
-    return `Hello ${await this.clamScanService.version(1000)}`;
+  getVersion(): Promise<string> {
+    return this.clamScanService.version();
   }
+
+
 }
