@@ -48,6 +48,7 @@ export class AppModule {}
 ```
 
 ## Intialize Service
+
 ```typescipt
 import { Controller, Get } from '@nestjs/common';
 import { ClamScanService } from 'nestjs-clamscan';
