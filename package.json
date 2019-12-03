@@ -1,6 +1,6 @@
 {
   "name": "nestjs-clamscan",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Clamscan for NestJS",
   "main": "dist/index.js",
   "scripts": {
