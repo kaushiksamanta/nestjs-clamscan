@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { ClamScanService } from '../src';
+import { ClamScanService, ClamScanDirectoryResult } from '../src';
 
 @Controller()
 export class AppController {
@@ -14,17 +14,17 @@ export class AppController {
   }
 
   @Get('/scan-infected')
-  async scanInfected() {
+  async scanInfected(): Promise<boolean> {
     return this.clamScanService.scanFile(__dirname + '/files/test.virus.txt');
   }
 
   @Get('/scan-safe')
-  async scanSafe() {
+  async scanSafe(): Promise<boolean> {
     return this.clamScanService.scanFile(__dirname + '/files/test.safe.txt');
   }
 
   @Get('/scan-directory')
-  async scanDirectory() {
+  async scanDirectory(): Promise<ClamScanDirectoryResult> {
     return this.clamScanService.scanDirectory(__dirname + '/files', {
       timeout: 5000,
       chunkSize: 64 * 1024,
