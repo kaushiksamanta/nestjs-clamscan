@@ -16,20 +16,56 @@ let ClamScanService = class ClamScanService {
         this.options = options;
         this.scanner = clamd.createScanner(options.host, options.port);
     }
-    scanStream(stream, timeout = 3000) {
-        return this.scanner.scanStream(stream, timeout);
+    /**
+     * Scan stream
+     * @param stream read stream object
+     * @param timeout use to set the socket's timeout option, default 3000
+     */
+    async scanStream(stream, timeout = 3000) {
+        const result = await this.scanner.scanStream(stream, timeout);
+        return clamd.isCleanReply(result);
     }
-    scanBuffer(buffer, timeout = 3000, chunkSize = 1024 * 1024) {
-        return this.scanner.scanBuffer(buffer, timeout, chunkSize);
+    /**
+     * Scan buffer
+     * @param buffer Object
+     * @param timeout use to set the socket's timeout option, default 3000
+     * @param chunkSize size of the chunk, which will send to ClamAV server, default 64 * 1024
+     */
+    async scanBuffer(buffer, timeout = 3000, chunkSize = 1024 * 1024) {
+        const result = await this.scanner.scanBuffer(buffer, timeout, chunkSize);
+        return clamd.isCleanReply(result);
     }
-    scanFile(path, timeout = 3000, chunkSize = 1024 * 1024) {
-        return this.scanner.scanFile(path, timeout, chunkSize);
+    /**
+     * Scan file
+     * @param path  file path, will be pass to path.normalize() first
+     * @param timeout use to set the socket's timeout option, default 3000
+     * @param chunkSize size of the chunk, which will send to ClamAV server, default 64 * 1024
+     */
+    async scanFile(path, timeout = 3000, chunkSize = 1024 * 1024) {
+        const result = await this.scanner.scanFile(path, timeout, chunkSize);
+        return clamd.isCleanReply(result);
     }
-    scanDirectory(path, options) {
-        return this.scanner.scanDirectory(path, options);
+    /**
+     * Scan directory
+     * @param rootPath Directory path, will be pass to path.normalize() first
+     * @param options ClamScan Directory Options
+     */
+    scanDirectory(rootPath, options) {
+        return this.scanner.scanDirectory(rootPath, options);
     }
+    /**
+     * Get version
+     * @param timeout use to set the socket's timeout option, default 1000
+     */
     version(timeout = 1000) {
         return clamd.version(this.options.host, this.options.port, timeout);
+    }
+    /**
+     * Ping
+     * @param timeout use to set the socket's timeout option, default 1000
+     */
+    ping(timeout = 1000) {
+        return clamd.ping(this.options.host, this.options.port, timeout);
     }
 };
 ClamScanService = __decorate([
